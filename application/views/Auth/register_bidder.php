@@ -72,12 +72,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 Register Account
               </button>
               <hr><center>
-                <a href="<?= base_url(); ?>auth/registerpenjual" class="btn btn-info btn-user ">
-                  <i class="fa fa-user fa-fw"></i> Register as Penjual
-                </a>
-                <a href="<?= base_url(); ?>auth/registerbidder" class="btn btn-info btn-user ">
-                  <i class="fa fa-users fa-fw"></i> Register as Bidder
-                </a>
               </form>
               <hr>
               <div class="text-center">

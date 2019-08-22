@@ -69,9 +69,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                   </form>
                     <hr><center>
               </form>
-                  <div class="text-center">
+                <!--   <div class="text-center">
                     <a class="small" href="<?= base_url(); ?>Auth/registerpenjual">Buat Akun Sekarang!</a>
-                  </div>
+                  </div> -->
                 </div>
               </div>
             </div>

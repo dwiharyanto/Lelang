@@ -49,8 +49,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                     <div class="setting-content2-left">
                                     </div>
                                     <div class="setting-content2-right">
-                                        <a href="<?= base_url(); ?>Auth/registerbidder">Register</a>
-                                        <a href="<?= base_url(); ?>Auth">Sign in</a>
+                                        <a href="<?= base_url(); ?>Penjual">Akun</a>
+                                        <a href="#" class="dropdown-toggle" id="notif" data-toggle="dropdown">Notification<span class="label label-pill label-danger" id="count"></span></a>
+                                        <ul class="dropdown-menu"></ul>
+                                        <a href="<?= base_url(); ?>Auth/logout">Logout</a>
                                     </div>
                                 </div>
                             </div>
@@ -62,7 +64,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         <div class="row align-items-center">
                             <div class="col-lg-2">
                                 <div class="logo">
-                                    <a href="<?= base_url(); ?>Market"><img src="<?php echo base_url('themes/daxone/assets/images/logo/logo.png')?>" alt="logo"></a>
+                                    <a href="index.html"><img src="<?php echo base_url('themes/daxone/assets/images/logo/logo.png')?>" alt="logo"></a>
                                 </div>
                             </div>
                             <div class="col-lg-9">
@@ -99,7 +101,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                         <li class="angle-shape"><a href="<?= base_url(); ?>Market">K a t e g o r i</a>
                                             <ul class="submenu">
                                                 <li><a href="<?= base_url(); ?>Market/kategorilukisan">L u k i s a n </a></li>
-                                                <li><a href="<?= base_url(); ?>Market/kategorikriya">K r i y a </a></li>
+                                                <li><a href="<?= base_url(); ?>Market/kategorikriya">K r i y a (Kerajinan Tangan) </a></li>
                                                 <li><a href="<?= base_url(); ?>Market/kategorigrafis">G r a f i s </a></li>
                                                 <li><a href="<?= base_url(); ?>Market/kategoriukiran">U k i r a n </a></li>
                                             </ul>
@@ -292,137 +294,183 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                 </div>
 <!-- PRODUK 1 -->
                     <div class="row">
-                        <?php foreach($market->result() as $m){?>
                         <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 col-12">
                             <div class="product-wrap product-border-3 product-img-zoom mb-30">
                                 <div class="product-img">
-                                    <a href="<?= base_url(); ?>Market/detailproduk"><img src="<?php echo base_url('assets/foto/'.$m->foto1)?>" style="width: 268px; height: 268px;"  alt="product"></a>
+                                    <a href="<?= base_url(); ?>Market/detailproduk"><img src="
+                                        <?php echo base_url('themes/daxone/assets/images/product-details/pain.png')?>" alt="product"></a>
                                     </div>
                                     <div class="product-content product-content-padding">
-                                        <h4><a href="<?= base_url(); ?>Market/detailproduk"><?php echo $m->namabrg;?></a></h4>
+                                        <h4><a href="<?= base_url(); ?>Market/detailproduk">Lukisan Penari Bali.</a></h4>
                                         <div class="price-addtocart">
                                             <div class="product-price">
-                                                <span>Current: <?php echo $m->crt;?></span>
+                                                <span>Current: 250.000</span>
                                             </div>
-                                            <span>OB: <?php echo $m->ob;?></span>
+                                            <span>OB: 120.000</span>
                                         </div>
                                         <div class="timer timer-style-2">
-                                            <div data-countdown=""></div>
+                                            <div data-countdown="2020/01/01"></div>
                                             <!-- COUNTDOWN MENGGUNAKAN TIMESTAMP -->
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            <?php } ?>
-                                        <a href="<?= base_url(); ?>Market/indexall" class="btn btn-info btn-block">
-                                      <i class="fa fa-user fa-fw"></i> Other</a>  
+<!-- PRODUK 2 -->
+                            <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 col-12">
+                                <div class="product-wrap product-border-1 product-img-zoom mb-30">
+                                    <div class="product-img">
+                                        <a href="product-details.html"><img src="
+                                            <?php echo base_url('themes/daxone/assets/images/product/footer2.png')?>" alt="product"></a>
+                                        </div>
+                                        <div class="product-content product-content-padding">
+                                            <h4><a href="product-details.html">Golden Easy Spot Chair.</a></h4>
+                                            <div class="price-addtocart">
+                                               <div class="product-price">
+                                                <span>Current: $210.00</span>
+                                            </div>
+                                            <span>OB: $230.00</span>
+                                        </div>
+                                            <div class="timer timer-style-2">
+                                                <div data-countdown="2020/01/01"></div>
+                                            </div>
+                                        </div>
                                     </div>
-                                  </div>
-
-
-
-               
-
-
-
-            <div class="blog-area pt-90 pb-50">
-                <div class="container">
-                    <div class="section-title-6 mb-50 text-center">
-                        <h2>Beli Saldo</h2>
-                        <h4><b>Ayo! Beli Saldo Untuk  Memulai  Bidding </h4>
-                    </div>
-                    <div class="row">
-                        <div class="col-lg-4 col-md-6 col-sm-6">
-                            <div class="blog-wrap mb-30">
-                                <div class="blog-img mb-20">
-                                    <a href="#"><img src="<?php echo base_url('themes/daxone/assets/images/blog/coin1.png')?>" alt="blog"></a>
                                 </div>
-                                <div class="blog-content blog-border">
-                                    <h3><a href="#"><h3>10 POINT | RP. 3.000,00</a></h3>
+<!-- PRODUK 3 -->
+                        <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 col-12">
+                            <div class="product-wrap product-border-3 product-img-zoom mb-30">
+                                <div class="product-img">
+                                    <a href="product-details.html"><img src="
+                                        <?php echo base_url('themes/daxone/assets/images/product/pro-hm5-1.jpg')?>" alt="product"></a>
+                                    </div>
+                                    <div class="product-content product-content-padding">
+                                        <h4><a href="product-details.html">Golden Easy Spot Chair.</a></h4>
+                                        <div class="price-addtocart">
+                                            <div class="product-price">
+                                                <span>Current: $210.00</span>
+                                            </div>
+                                            <span>OB: $230.00</span>
+                                        </div>
+                                        <div class="timer timer-style-2">
+                                            <div data-countdown="2020/01/01"></div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="col-lg-4 col-md-6 col-sm-6">
-                            <div class="blog-wrap mb-30">
-                                <div class="blog-img mb-20">
-                                    <a href="#"><img src="<?php echo base_url('themes/daxone/assets/images/blog/coin2.png')?>" alt="blog"></a>
+ <!-- PRODUK 4 -->
+                       <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 col-12">
+                        <div class="product-wrap product-border-3 product-img-zoom mb-30">
+                            <div class="product-img">
+                                <a href="product-details.html"><img src="
+                                    <?php echo base_url('themes/daxone/assets/images/product/pro-hm5-1.jpg')?>" alt="product"></a>
                                 </div>
-                                <div class="blog-content blog-border">
-                                    <h3><a href="#"><h3>17 POINT | RP. 5.000,00</a></h3>
+                                <div class="product-content product-content-padding">
+                                    <h4><a href="product-details.html">Golden Easy Spot Chair.</a></h4>
+                                    <div class="price-addtocart">
+                                        <div class="product-price">
+                                                <span>Current: $210.00</span>
+                                            </div>
+                                            <span>OB: $230.00</span>
+                                        </div>
+                                    <div class="timer timer-style-2">
+                                        <div data-countdown="2020/01/01"></div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    <div class="col-lg-4 col-md-6 col-sm-6">
-                        <div class="blog-wrap mb-30">
-                            <div class="blog-img mb-20">
-                                <a href="#"><img src="<?php echo base_url('themes/daxone/assets/images/blog/coin3.png')?>" alt="blog"></a>
-                            </div>
-                            <div class="blog-content blog-border">
-                                <h3><a href="#"><h3>30 POINT | RP. 10.000,00</a></h3>
-                            </div>
-                        </div>
-                    </div>
-                     <div class="col-lg-4 col-md-6 col-sm-6">
-                        <div class="blog-wrap mb-30">
-                            <div class="blog-img mb-20">
-                                <a href="#"><img src="<?php echo base_url('themes/daxone/assets/images/blog/coin4.png')?>" alt="blog"></a>
-                            </div>
-                            <div class="blog-content blog-border">
-                                <h3><a href="#"><h3>50 POINT | RP. 20.000,00</a></h3>
-                            </div>
-                        </div>
-                    </div>
-                     <div class="col-lg-4 col-md-6 col-sm-6">
-                        <div class="blog-wrap mb-30">
-                            <div class="blog-img mb-20">
-                                <a href="#"><img src="<?php echo base_url('themes/daxone/assets/images/blog/coin5.png')?>" alt="blog"></a>
-                            </div>
-                            <div class="blog-content blog-border">
-                                <h3><a href="#"><h3>100 POINT | RP. 45.000,00</a></h3>
+
+<!-- PRODUK 5 -->
+                       <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 col-12">
+                        <div class="product-wrap product-border-3 product-img-zoom mb-30">
+                            <div class="product-img">
+                                <a href="product-details.html"><img src="
+                                    <?php echo base_url('themes/daxone/assets/images/product/pro-hm5-1.jpg')?>" alt="product"></a>
+                                </div>
+                                <div class="product-content product-content-padding">
+                                    <h4><a href="product-details.html">Golden Easy Spot Chair.</a></h4>
+                                    <div class="price-addtocart">
+                                        <div class="product-price">
+                                                <span>Current: $210.00</span>
+                                            </div>
+                                            <span>OB: $230.00</span>
+                                        </div>
+                                    <div class="timer timer-style-2">
+                                        <div data-countdown="2020/01/01"></div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                     <div class="col-lg-4 col-md-6 col-sm-6">
-                        <div class="blog-wrap mb-30">
-                            <div class="blog-img mb-20">
-                                <a href="#"><img src="<?php echo base_url('themes/daxone/assets/images/blog/coin6.png')?>" alt="blog"></a>
-                            </div>
-                            <div class="blog-content blog-border">
-                                <h3><a href="#"><h3>299 POINT | RP. 100.000,00</a></h3>
+
+ <!-- PRODUK 6 -->
+                       <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 col-12">
+                        <div class="product-wrap product-border-3 product-img-zoom mb-30">
+                            <div class="product-img">
+                                <a href="product-details.html"><img src="
+                                    <?php echo base_url('themes/daxone/assets/images/product/pro-hm5-1.jpg')?>" alt="product"></a>
+                                </div>
+                                <div class="product-content product-content-padding">
+                                    <h4><a href="product-details.html">Golden Easy Spot Chair.</a></h4>
+                                    <div class="price-addtocart">
+                                        <div class="product-price">
+                                                <span>Current: $210.00</span>
+                                            </div>
+                                            <span>OB: $230.00</span>
+                                        </div>
+                                    <div class="timer timer-style-2">
+                                        <div data-countdown="2020/01/01"></div>
+                                    </div>
+                                </div>
+                            </div>            
+                        </div>
+
+<!-- PRODUK 7 -->
+                       <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 col-12">
+                        <div class="product-wrap product-border-3 product-img-zoom mb-30">
+                            <div class="product-img">
+                                <a href="product-details.html"><img src="
+                                    <?php echo base_url('themes/daxone/assets/images/product/pro-hm5-1.jpg')?>" alt="product"></a>
+                                </div>
+                                <div class="product-content product-content-padding">
+                                    <h4><a href="product-details.html">Golden Easy Spot Chair.</a></h4>
+                                    <div class="price-addtocart">
+                                        <div class="product-price">
+                                                <span>Current: $210.00</span>
+                                            </div>
+                                            <span>OB: $230.00</span>
+                                        </div>
+                                    <div class="timer timer-style-2">
+                                        <div data-countdown="2020/01/01"></div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                </div>
-            <div class="checkout-main-area pt-9 pb-90">
-            <div class="container">
-                <div class="customer-zone mb-20">
-                    <p class="cart-page-title">Ingin Beli Saldo? <a class="checkout-click1" href="#">Klik disini untuk beli</a></p>
-                    <div class="checkout-login-info">
-                        <p>Pembelian dapat menggunakan GOPAY dan Rekening Bank BNI.</p>
-                         <div class="banner-area pt-30">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-6 col-md-6 col-sm-6">
-                        <div class="banner-wrap mb-30 res-white-overly-xs">
-                            <a href="product-details.html">
-                                <img src="<?php echo base_url('themes/daxone/assets/images/banner/scan1.png')?>" alt="banner">
-                            </a>
-                            <div class="banner-content-16">
+                       
+                        
+
+
+<!-- PRODUK 8 -->
+                       <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 col-12">
+                        <div class="product-wrap product-border-3 product-img-zoom mb-30">
+                            <div class="product-img">
+                                <a href="product-details.html"><img src="
+                                    <?php echo base_url('themes/daxone/assets/images/product/pro-hm5-1.jpg')?>" alt="product"></a>
+                                </div>
+                                <div class="product-content product-content-padding">
+                                    <h4><a href="product-details.html">Golden Easy Spot Chair.</a></h4>
+                                    <div class="price-addtocart">
+                                        <div class="product-price">
+                                                <span>Current: $210.00</span>
+                                            </div>
+                                            <span>OB: $230.00</span>
+                                        </div>
+                                    <div class="timer timer-style-2">
+                                        <div data-countdown="2020/01/01"></div>
+                                    </div>
+                                </div>
                             </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-6 col-md-6 col-sm-6">
-                        <div class="banner-wrap mb-30 res-white-overly-xs">
-                            <a href="product-details.html">
-                                <img src="<?php echo base_url('themes/daxone/assets/images/banner/scan2.png')?>" alt="banner">
-                            </a>
-                            <div class="banner-content-16">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+                            <a href="<?= base_url(); ?>Market/indexall" class="btn btn-info btn-block ">
+                              <i class="fa fa-user fa-fw"></i> Other</a>  
+                          </div>
                     </div>
                 </div> 
                 </div>
@@ -494,8 +542,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                 <div class="footer-list-4">
                                     <ul>
                                         <li><a href="<?= base_url(); ?>Market/faq">FAQ</a></li>
-                                        <li><a href="<?= base_url(); ?>Auth">Login</a></li>
-                                        <li><a href="<?= base_url(); ?>Auth/Registerbidder">Register</a></li>
                                     </ul>
                                 </div>
                             </div>
@@ -568,3 +614,4 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     </body>
 
     </html>
+

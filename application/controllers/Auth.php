@@ -65,10 +65,10 @@ class Auth extends CI_Controller {
 					$data = [
 						'idpenjual' => $penjual['idpenjual'],
 						'namapenjual' => $penjual['namapenjual'],
-						'fotoprofil' => $penjual['fotoprofil']
+						'fotoprofil' => $penjual['fotopenjual']
 					];
 					$this->session->set_userdata($data);
-					redirect('Penjual');
+					redirect('Penjual/mainpenjual');
 				}else{
 					$this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Wrong password</div>');
 					redirect('Auth/loginpenjual');
@@ -85,13 +85,12 @@ class Auth extends CI_Controller {
 				// cek password
 				if (password_verify($pw, $bidder['pw'])) {
 					$data = [
-						'authenticated'=>true,
 						'idbidder' => $bidder['idbidder'],
 						'namabidder' => $bidder['namabidder'],
 						'fotoprofil' => $bidder['fotoprofil']
 					];
 					$this->session->set_userdata($data);
-					redirect('Bid');
+					redirect('Bidder/mainbidder');
 				}else{
 					$this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Wrong password</div>');
 					redirect('Auth');
@@ -151,7 +150,7 @@ class Auth extends CI_Controller {
 				'email' => htmlspecialchars($this->input->post('email', true)),
 				'telp' => htmlspecialchars($this->input->post('telp', true)),
 				'status' => 0,
-				'fotoprofil' => 'default.jpg'
+				'fotopenjual' => 'default.jpg'
 			];
 
 			$this->db->insert('tpenjual', $data);
@@ -188,7 +187,8 @@ class Auth extends CI_Controller {
 				'alamat' => htmlspecialchars($this->input->post('alamat', true)),
 				'email' => htmlspecialchars($this->input->post('email', true)),
 				'telp' => htmlspecialchars($this->input->post('telp', true)),
-				'status' => 1
+				'status' => 1,
+				'saldo' => 8
 
 
 			];

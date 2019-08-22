@@ -5,7 +5,9 @@ class Market extends CI_Controller {
 
 	public function index()
 	{
-		$this->load->view('Market/index_market');
+		// $data['market']=$this->db->get('tlelang', 9);
+		$data['market']=$this->db->query("SELECT * FROM tlelang LIMIT 12;");
+		$this->load->view('Market/index_market', $data);
 	}
 
 	public function indexall()

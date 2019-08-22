@@ -31,14 +31,14 @@ class Bid_iteration extends CI_Controller
 								$this->session->set_flashdata('message', 'Jatah bid maksimal 3 kali untuk 1 produk');
 								
 								// alihkan ke halaman bid_view.php
-								redirect('bid');
+								redirect('bidder/mainbidder');
 			}
 
 			//jika bid kurang dari 3
 			else 
 			{	
 				// alihkan ke halaman bid_add.php
-				redirect('bid/add/'.$id);
+				redirect('bidder/detailbid/'.$id);
 			}
 
 		}

@@ -66,6 +66,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                             <li class="dropdown hidden-xs">     
                                <li class="dropdown">
                                 <a href="" class="dropdown-toggle profile" data-toggle="dropdown" aria-expanded="true"><img src="<?php echo base_url('assets/foto/'.$this->session->userdata('fotoprofil'))?>" alt="user-img" class="img-circle"> </a>
+                                </li>
+                            </li>
                             </ul>
                         </div>
                     </div>
@@ -97,7 +99,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         <a href="<?= base_url(); ?>Penjual" class="waves-effect"><i class="md md-home"></i><span> Dashboard </span></a>
                     </li>
                     <li>
-                        <a href="<?= base_url(); ?>Penjual" class="waves-effect"><i class="fa fa-users"></i><span> Post Produk </span></a>
+                        <a href="<?= base_url(); ?>Penjual/postproduk" class="waves-effect"><i class="fa fa-users"></i><span> Post Produk </span></a>
                     </li>
                     <li>
                         <a href="<?= base_url(); ?>Penjual/pesan" class="waves-effect"><i class=" md-my-library-add"></i><span> Pesan </span></a>
@@ -113,162 +115,41 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
      <div class="content-page">
         <!-- Start content -->
+
         <div class="content">
-            <div class="container">
-
-
-                <div class="row">
-                    <div class="col-sm-12">
-                        <div class="panel panel-default">
-                            <div class="panel-heading"><h3 class="panel-title">Form Post Produk</h3></div>
-                            <div class="panel-body">
-                                <div class=" form">
-                                    <form class="cmxform form-horizontal tasi-form" id="commentForm" method="post" action="<?php echo base_url();?>Penjual/addbarang" novalidate="novalidate" enctype="multipart/form-data">
-
-                                       <div class="form-group ">
-                                            <label class="control-label col-sm-2">Nama Barang</label>
-                                            <div class="col-sm-6">
-                                                <input class=" form-control" name="namabrg" type="text" required="" aria-required="true">
-                                            </div>
+        <div class="container">
+      <div class="col-lg-4">
+                                <div class="panel panel-default">
+                                    <div class="panel-heading">
+                                        <h4 class="panel-title">Pesan</h4>
+                                    </div>
+                                    <div class="panel-body">
+                                        <?php if ($pesan->num_rows() == 0){
+                                           echo $this->session->flashdata('pesan');
+                                        }else{ 
+                                        ?>
+                                        <div class="inbox-widget nicescroll mx-box">
+                                            <?php foreach($pesan->result() as $k){?>
+                                            <a href="<?= base_url(); ?>Penjual/detailpesan/<?=$k->iddiskusi?>">
+                                                <div class="inbox-item">
+                                                    <div class="inbox-item-img"><img src="<?php echo base_url('./assets/foto/'.$k->fotoprofil); ?>" class="img-circle" alt=""></div>
+                                                    <p class="inbox-item-author"><?= $k->namabidder; ?></p>
+                                                    <p class="inbox-item-text"><?= $k->isi; ?></p>
+                                                    <p class="inbox-item-date"><?= $k->tgl; ?></p>
+                                                </div>
+                                            </a>
+                                        <?php } ?>
                                         </div>
-
-                                        <div class="form-group ">
-                                            <label class="control-label col-sm-2">OB</label>
-                                            <div class="col-sm-6">
-                                                <input class="form-control " type="number" name="ob" required="" aria-required="true" placeholder="Open Bidding / Harga Awal">
-                                            </div>
-                                        </div>
-
-                                        <div class="form-group ">
-                                            <label class="control-label col-sm-2">Inc</label>
-                                            <div class="col-sm-6">
-                                                <input class="form-control " type="number" name="inc" required="" aria-required="true" placeholder="Increment / Harga Kelipatan">
-                                            </div>
-                                        </div>
-
-  <!--           WAKTUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUU -->
-
-                                        <div class="form-group ">
-                                            <label class="control-label col-sm-2">Waktu Lelang</label>
-                                            <div class="col-sm-6">
-                                                
-                                                <input class="form-control " type="date" name="waktu_akhir" required="" aria-required="true">
-                                            </div>
-                                        </div>
-  <!--           WAKTUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUU -->
-
-                                         <div class="form-group">
-                        <label class="control-label col-sm-2" >Kategori</label>
-                        <div class="col-sm-6">
-                             <select name="idkategori" class="form-control" required>
-                                <option value="">-PILIH-</option>
-                                <option value="1">Lukisan</option>
-                                <option value="2">Kriya</option>
-                                <option value="3">Grafis</option>
-                                <option value="4">Ukiran</option>
-                             </select>
-                        </div>
-                    </div>
-                                        <div class="form-group">
-                                            <label class="col-md-2 control-label">Deskripsi</label>
-                                            <div class="col-md-10">
-                                                <textarea class="form-control" rows="5" name="deskripsi"></textarea>
-                                            </div>
-                                        </div>
-                                        <div class="form-group ">
-                                            <label class="control-label col-sm-2">Foto</label>
-                                            <div class="col-sm-6">
-                                                <input class="form-control " type="file" name="foto1" required="" aria-required="true">
-                                            </div>
-                                        </div>
-
-                                        <div class="form-group">
-                                            <div class="col-lg-offset-2 col-lg-10">
-                                                <button class="btn btn-success waves-effect waves-light" type="submit">Submit</button>
-                                                <button class="btn btn-default waves-effect" type="reset">Reset</button>
-                                            </div>
-                                        </div>
-                                    </form>
-
-                                    <!--END MODAL ADD BARANG-->
-
-
-
-
-                                    <br>
-                                    <div class="content">
-                                        <div class="container">
-
-                                            <div class="panel">
-
-                                                <div class="panel-body">
-
-
-                                                   <!--  <?php echo $this->session->flashdata('message');?> -->
-                                                   <?php if($this->session->flashdata('hapuspost') == TRUE): ?>
-                                                    <div role="alert" class="alert alert-success alert-dismissable fade in">
-                                                        <button aria-label="close" data-dismiss="alert" class="close" type="button"> <span aria-hidden="true" class="fa fa-times"></span></button>
-                                                        <p><?php echo $this->session->flashdata('hapuspost')?></p>
-                                                    </div>
-                                                <?php endif; ?>
-
-
-
-
-
-                                                    <div class="row">
-                                                        <div class="col-sm-6">
-                                                            <div class="m-b-30">
-
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <table class="table table-bordered table-striped" id="datatables">
-                                                        <thead>
-                                                            <tr>
-                                                                <th>No</th>
-                                                                <th>Nama</th>
-                                                                <th>Ob</th>
-                                                                <th>Inc</th>
-                                                                <th>Waktu Akhir</th>
-                                                                <th>Kategori</th>
-                                                                <th>Deskripsi</th>
-                                                                <th>Foto</th>
-                                                                <th>Actions</th>
-                                                            </tr>
-                                                        </thead>
-                                                        <tbody>
-                                                          <?php
-
-                                                          foreach($penjual->result() as $i => $p){
-                                                              ?>
-                                                              <tr>
-                                                                <td><?php echo $i+1; ?></td>
-                                                                <td><?php echo $p->namabrg; ?></td>
-                                                                <td><?php echo $p->ob; ?></td>
-                                                                <td><?php echo $p->inc; ?></td>
-                                                                <td><?php echo $p->waktu_akhir; ?></td>
-                                                                <td><?php echo $p->idkategori; ?></td>
-                                                                <td><?php echo $p->deskripsi; ?></td>
-                                                                <td> <img src="<?php echo base_url('assets/foto/'.$p->foto1)?>" width='100' height='100' ></td>
-
-                                                                <td class="actions">
-                                                                    <a href="<?php echo base_url('Penjual/hapuspost/'.$p->idlelang);?>"><i class="fa fa-remove"> Hapus</i></a> |
-                                                                    <a href="<?php echo base_url('Penjual/detailpost/'.$p->idlelang);?>"><i class="fa fa-pencil"> Detail</i></a>
-                                                                </td>
-                                                            </tr>
-                                                        <?php } ?>
-                                                    </tbody>
-                                                </table>
-
-                                            </div>
+                                    <?php }?>
+                                    </div>
+                                </div>
+                            </div> 
+                         </div>
+                                        
                                         </div>
                                     </div>
-
-
-                                    <!-- /Right-bar -->
-
                                 </div>
+                            </div>
                                 <!-- END wrapper -->
 
 

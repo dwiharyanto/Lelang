@@ -29,6 +29,7 @@ class Admin extends CI_Controller {
 	{
 		$idpenjual=$this->uri->segment(3);
 		$this->Admin_model->hapus_penjual($idpenjual);
+		$this->session->set_flashdata('hapuspenjual', 'Anda Berhasil Menghapus Data Penjual');
 		redirect(base_url(). 'Admin/datapenjual');
 	}
 //////////////////////////////////////////////////////////////////
@@ -42,6 +43,7 @@ class Admin extends CI_Controller {
 	{
 		$idbidder=$this->uri->segment(3);
 		$this->Admin_model->hapus_bidder($idbidder);
+		$this->session->set_flashdata('hapusbidder', 'Anda Berhasil Menghapus Data Bidder');
 		redirect(base_url(). 'Admin/databidder');
 	}
 /////////////////////////////////////////////////////////////////
@@ -55,6 +57,7 @@ class Admin extends CI_Controller {
 	{
 		$idlelang=$this->uri->segment(3);
 		$this->Admin_model->hapus_barang($idlelang);
+		$this->session->set_flashdata('hapusbarang', 'Anda Berhasil Menghapus Data Barang');
 		redirect(base_url(). 'Admin/databarang');
 	}
 ///////////////////////////////////////////////////////////
@@ -86,9 +89,10 @@ class Admin extends CI_Controller {
 	{
         $idsaldo=$this->uri->segment(3);
         $this->Admin_model->delete_saldo($idsaldo);
+        $this->session->set_flashdata('deletesaldo', 'Anda Berhasil Menghapus Data Saldo');
         redirect('Admin/datasaldo');
 	}
-
+/////////////////////////////////////////////////////////////////////////////
 	
 		function belisaldo()
 	{
@@ -113,14 +117,12 @@ class Admin extends CI_Controller {
 			);
 		//simpan data 
 		$this->Admin_model->belisaldo($bidder, $idbidder);
-
 		redirect('Main');
 		}
 
-
 	}
 
-
+/////////////////////////////////////////////////////
 
 
 }

@@ -129,6 +129,17 @@ $namaadmin=$this->session->userdata('namaadmin');
                     </div>
                 </div>
                 <div class="panel panel-body">
+
+<?php if($this->session->flashdata('hapusbidder') == TRUE): ?>
+                                                    <div role="alert" class="alert alert-success alert-dismissable fade in">
+                                                        <button aria-label="close" data-dismiss="alert" class="close" type="button"> <span aria-hidden="true" class="fa fa-times"></span></button>
+                                                        <p><?php echo $this->session->flashdata('hapusbidder')?></p>
+                                                    </div>
+                                                <?php endif; ?>
+
+
+
+
                     <table class="table table-bordered table-striped" id="datatables">
                         <thead>
                             <tr>
@@ -165,9 +176,6 @@ $namaadmin=$this->session->userdata('namaadmin');
 
 
 
-<footer class="footer text-right">
-    2019 © Lelangkah
-</footer>
 
 
 

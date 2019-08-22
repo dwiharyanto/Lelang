@@ -49,8 +49,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                     <div class="setting-content2-left">
                                     </div>
                                     <div class="setting-content2-right">
-                                        <a href="<?= base_url(); ?>Auth/registerbidder">Register</a>
-                                        <a href="<?= base_url(); ?>Auth">Sign in</a>
+                                        <a href="<?= base_url(); ?>Bidder">Akun</a>
+                                        <a href="#" class="dropdown-toggle" id="notif" data-toggle="dropdown">Notification<span class="label label-pill label-danger" id="count"></span></a>
+                                        <ul class="dropdown-menu"></ul>
+                                        <a href="<?= base_url(); ?>Auth/logout">Logout</a>
                                     </div>
                                 </div>
                             </div>
@@ -62,7 +64,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         <div class="row align-items-center">
                             <div class="col-lg-2">
                                 <div class="logo">
-                                    <a href="<?= base_url(); ?>Market"><img src="<?php echo base_url('themes/daxone/assets/images/logo/logo.png')?>" alt="logo"></a>
+                                    <a href="index.html"><img src="<?php echo base_url('themes/daxone/assets/images/logo/logo.png')?>" alt="logo"></a>
                                 </div>
                             </div>
                             <div class="col-lg-9">
@@ -78,14 +80,40 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                                 </button>
                                             </div>
                                         </form>
-                                    </div>
+                                   </div>
                                 </div>
                             </div>
-                        
+                        <div class="col-lg-1">
+                                <div class="cart-wrap cart-wrap-3">
+                                    <button class="cart-active">
+                                        <i class="la la-tags"></i><span class="mini-cart-price-3"><?= $bidder['saldo']; ?></span> 
+                                        
+                                    </button>
                         </div>
                     </div>
                 </div>
             </div>
+        </div>
+            <!------------------------------------------------------------------------------------>
+                <!-- baris program dibawah ini untuk menampilkan flashdata sukses maupun pesan error-->
+                <!------------------------------------------------------------------------------------>
+                    
+                <?php if ($this->session->flashdata('success')): ?>
+                            <div class="alert alert-success" role="alert">
+                                <?php echo $this->session->flashdata('success'); ?>
+                            </div>
+                    <?php endif; ?>
+
+                    <?php 
+                if($this->session->flashdata('message'))
+                    {  ?>
+                        <div id ="pesan-error" class="alert alert-danger">
+                        <?php   echo $this->session->flashdata('message'); ?> </div>  
+                    <?php } ?>
+
+                <!------------------------------------------------------------------------------------>
+                <!------------------------------------------------------------------------------------>
+                <!------------------------------------------------------------------------------------>
             <div class="header-bottom sticky-bar">
                 <div class="container-fluid">
                     <div class="row">
@@ -99,7 +127,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                         <li class="angle-shape"><a href="<?= base_url(); ?>Market">K a t e g o r i</a>
                                             <ul class="submenu">
                                                 <li><a href="<?= base_url(); ?>Market/kategorilukisan">L u k i s a n </a></li>
-                                                <li><a href="<?= base_url(); ?>Market/kategorikriya">K r i y a </a></li>
+                                                <li><a href="<?= base_url(); ?>Market/kategorikriya">K r i y a (Kerajinan Tangan) </a></li>
                                                 <li><a href="<?= base_url(); ?>Market/kategorigrafis">G r a f i s </a></li>
                                                 <li><a href="<?= base_url(); ?>Market/kategoriukiran">U k i r a n </a></li>
                                             </ul>
@@ -296,10 +324,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 col-12">
                             <div class="product-wrap product-border-3 product-img-zoom mb-30">
                                 <div class="product-img">
-                                    <a href="<?= base_url(); ?>Market/detailproduk"><img src="<?php echo base_url('assets/foto/'.$m->foto1)?>" style="width: 268px; height: 268px;"  alt="product"></a>
+                                    <a href="<?php echo base_url('bid_iteration/check/'.$m->idlelang)?>"><img src="<?php echo base_url('assets/foto/'.$m->foto1)?>" style="width: 268px; height: 268px;"  alt="product"></a>
                                     </div>
                                     <div class="product-content product-content-padding">
-                                        <h4><a href="<?= base_url(); ?>Market/detailproduk"><?php echo $m->namabrg;?></a></h4>
+                                        <h4><a href="<?php echo base_url('bid_iteration/check/'.$m->idlelang)?>"><?php echo $m->namabrg;?></a></h4>
                                         <div class="price-addtocart">
                                             <div class="product-price">
                                                 <span>Current: <?php echo $m->crt;?></span>
@@ -307,21 +335,18 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                             <span>OB: <?php echo $m->ob;?></span>
                                         </div>
                                         <div class="timer timer-style-2">
-                                            <div data-countdown=""></div>
+                                            <div data-countdown="2019-08-23"></div>
                                             <!-- COUNTDOWN MENGGUNAKAN TIMESTAMP -->
                                         </div>
                                     </div>
                                 </div>
                             </div>
+                           <!--  <?php echo $m->y."/0".$m->m."/".$m->d; ?> -->
                             <?php } ?>
-                                        <a href="<?= base_url(); ?>Market/indexall" class="btn btn-info btn-block">
+                                        <a href="<?= base_url(); ?>Bidder/indexall" class="btn btn-info btn-block">
                                       <i class="fa fa-user fa-fw"></i> Other</a>  
                                     </div>
-                                  </div>
-
-
-
-               
+                          </div>
 
 
 
@@ -399,6 +424,40 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                     <p class="cart-page-title">Ingin Beli Saldo? <a class="checkout-click1" href="#">Klik disini untuk beli</a></p>
                     <div class="checkout-login-info">
                         <p>Pembelian dapat menggunakan GOPAY dan Rekening Bank BNI.</p>
+                      <!--   <form class="cmxform form-horizontal tasi-form" id="commentForm" method="post" action="<?php echo base_url();?>Admin/belisaldo" novalidate="novalidate">  -->
+                           
+                            <?php
+                            echo form_open_multipart('Admin/belisaldo');
+                            ?>
+                            <input type="hidden" name="idbidder" value="<?php echo $this->session->userdata('idbidder');?>">
+                            <div class="row">
+                                  <div class="col-lg-6 col-md-6">
+                                        <div class="billing-select mb-20">
+                                            <label>Jumlah Saldo Yang Dibeli<abbr class="required" title="required">*</abbr></label>
+                                            <select name="saldo" class="form-control">
+                                               <option label="Pilih Saldo"></option>
+                                               <option value="10">10 POINT - RP. 3.000,00</option>
+                                               <option value="17">17 POINT - RP. 5.000,00</option>
+                                               <option value="30">30 POINT - RP. 10.000,00</option>
+                                               <option value="50">50 POINT - RP. 20.000,00</option>
+                                               <option value="100">100 POINT - RP. 45.000,00</option>
+                                               <option value="250">250 POINT - RP. 100.000,00</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6 col-md-6">
+                                        <label>Upload Bukti Transfer <span>*</span></label>
+                                        <div class="custom-file">
+                                          <input type="file" class="custom-file-input" id="fototransfer" name="fototransfer">
+                                          <label class="custom-file-label" for="customFile">Choose file</label>
+                                      </div>
+                                  </div>
+                             <div class="button-remember-wrap">
+                                <div class="col-lg-offset-2 col-lg-10">
+                                <button class="btn btn-info" type="submit">Submit</button>
+                                   <?php echo form_close(); ?>
+                            </div>
+                        </div>
                          <div class="banner-area pt-30">
             <div class="container">
                 <div class="row">
@@ -494,8 +553,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                 <div class="footer-list-4">
                                     <ul>
                                         <li><a href="<?= base_url(); ?>Market/faq">FAQ</a></li>
-                                        <li><a href="<?= base_url(); ?>Auth">Login</a></li>
-                                        <li><a href="<?= base_url(); ?>Auth/Registerbidder">Register</a></li>
                                     </ul>
                                 </div>
                             </div>

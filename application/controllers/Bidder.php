@@ -15,6 +15,23 @@ class Bidder extends CI_Controller {
 		$this->load->view('Bidder/index_bidder', $data);
 	}
 
+	public function mainbidder()
+	{
+	$data['market']=$this->db->query("SELECT * FROM tlelang LIMIT 12;");
+		$data['bidder'] = $this->db->get_where('tbidder', ['idbidder' => 
+			$this->session->userdata('idbidder')])->row_array();
+		$this->load->view('Bidder/main_bidder', $data);
+	}
+
+	public function detailbid()
+	{
+		$idlelang=$this->uri->segment(3);
+		$data['default']=$this->db->query("SELECT * FROM tlelang WHERE idlelang='".$idlelang."' LIMIT 12;");
+		$data['bidder'] = $this->db->get_where('tbidder', ['idbidder' => 
+			$this->session->userdata('idbidder')])->row_array();
+		$this->load->view('Bidder/detail_bid', $data);
+	}
+
 	public function editprofil(){
 		
 		$data = array(

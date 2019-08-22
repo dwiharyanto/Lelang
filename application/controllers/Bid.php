@@ -29,13 +29,11 @@ class Bid extends CI_Controller
 
 
 	// fungsi memproses logika bidding 
-	public function add($id)
-
-		{
-
-			// mengambil data tabel tlelang berdasarkan $id
-			$data['default'] = $this->Bid_model->getRow($id);
-
+	public function add($idlelang)
+		{	
+			$data['default']=$this->db->query("SELECT * FROM tlelang WHERE idlelang='".$idlelang."' LIMIT 12;");
+				$data['bidder'] = $this->db->get_where('tbidder', ['idbidder' => 
+			$this->session->userdata('idbidder')])->row_array();
 			// mengambil data bidder berdasarkan id
         	$user = $this->Bid_model->get($this->session->userdata('idbidder')); 
 
@@ -46,8 +44,7 @@ class Bid extends CI_Controller
 			// jika inputan tidak sesuai ketentuan
 			if ($this->form_validation->run() == FALSE)
 	        {
-				// Menampilkan view dari file "bid_edit.php"
-				$this->load->view("bid/bid_add",$data);
+				$this->load->view('Bidder/detail_bid', $data);
 	        }
 
 	        // jika inputan sesuai ketentuan
@@ -90,7 +87,7 @@ class Bid extends CI_Controller
             	$this->session->set_flashdata('success', 'Bidding dengan nominal '.$this->input->post('crt_new').' berhasil diajukan'); 
 
 				// alihkan ke halaman view dari file "bid_view.php"
-				redirect("bid");
+				redirect("bidder/mainbidder");
 			}
 
 		}

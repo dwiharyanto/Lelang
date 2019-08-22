@@ -7,7 +7,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>Lelangkah</title>
+    <title>Lelangkah | About</title>
     <meta name="robots" content="noindex, follow" />
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -62,7 +62,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         <div class="row align-items-center">
                             <div class="col-lg-2">
                                 <div class="logo">
-                                    <a href="index.html"><img src="<?php echo base_url('themes/daxone/assets/images/logo/logo.png')?>" alt="logo"></a>
+                                    <a href="<?= base_url(); ?>Market"><img src="<?php echo base_url('themes/daxone/assets/images/logo/logo.png')?>" alt="logo"></a>
                                 </div>
                             </div>
                             <div class="col-lg-9">
@@ -99,7 +99,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                         <li class="angle-shape"><a href="<?= base_url(); ?>Market">K a t e g o r i</a>
                                             <ul class="submenu">
                                                 <li><a href="<?= base_url(); ?>Market/kategorilukisan">L u k i s a n </a></li>
-                                                <li><a href="<?= base_url(); ?>Market/kategorikriya">K r i y a (Kerajinan Tangan) </a></li>
+                                                <li><a href="<?= base_url(); ?>Market/kategorikriya">K r i y a </a></li>
                                                 <li><a href="<?= base_url(); ?>Market/kategorigrafis">G r a f i s </a></li>
                                                 <li><a href="<?= base_url(); ?>Market/kategoriukiran">U k i r a n </a></li>
                                             </ul>

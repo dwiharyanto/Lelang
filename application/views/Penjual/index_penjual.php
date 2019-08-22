@@ -49,7 +49,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             <!-- LOGO -->
             <div class="topbar-left">
                 <div class="text-center">
-                    <a href="<?= base_url(); ?>Penjual" class="logo"><i class="fa fa-gavel"></i> <span>Lelangkah </span></a>
+                    <a href="<?= base_url(); ?>Penjual/mainpenjual" class="logo"><i class="fa fa-gavel"></i> <span>Lelangkah </span></a>
                 </div>
             </div>
             <!-- Button mobile view to collapse sidebar menu -->
@@ -228,7 +228,7 @@ $namapenjual=$this->session->userdata('namapenjual');
                     <div class="container">
                         <div class="form-group">
                             <a href="#" class="thumbnail">
-                                <img src="<?php echo './assets/foto/'.$penjual["fotoprofil"]; ?>">
+                                <img src="<?php echo './assets/foto/'.$penjual["fotopenjual"]; ?>">
 
 
                             </a>
@@ -267,9 +267,7 @@ $namapenjual=$this->session->userdata('namapenjual');
 </body>
 
 
-<footer class="footer text-right">
-    2019 © Lelangkah
-</footer>
+
 
 </div>
 </div>

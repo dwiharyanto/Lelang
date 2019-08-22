@@ -49,7 +49,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             <!-- LOGO -->
             <div class="topbar-left">
                 <div class="text-center">
-                    <a href="<?= base_url(); ?>Bidder" class="logo"><i class="fa fa-gavel"></i> <span>Lelangkah </span></a>
+                    <a href="<?= base_url(); ?>Bidder/mainbidder" class="logo"><i class="fa fa-gavel"></i> <span>Lelangkah </span></a>
                 </div>
             </div>
             <!-- Button mobile view to collapse sidebar menu -->
@@ -264,11 +264,11 @@ $namabidder=$this->session->userdata('namabidder');
 </body>
 
 
-<footer class="footer text-right">
-    2019 © Lelangkah
-</footer>
+
 
 </div>
+</div>
+
 </div>
 <!-- END wrapper -->
 

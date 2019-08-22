@@ -32,7 +32,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
    </head>
 
-   <body>
+    <body>
     <div class="main-wrapper">
         <header class="header-area header-padding-4">
             <div class="main-header-wrap">
@@ -49,8 +49,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                     <div class="setting-content2-left">
                                     </div>
                                     <div class="setting-content2-right">
-                                        <a href="<?= base_url(); ?>Auth/registerbidder">Register</a>
-                                        <a href="<?= base_url(); ?>Auth">Sign in</a>
+                                        <a href="<?= base_url(); ?>Bidder">Akun</a>
+                                        <a href="#" class="dropdown-toggle" id="notif" data-toggle="dropdown">Notification<span class="label label-pill label-danger" id="count"></span></a>
+                                        <ul class="dropdown-menu"></ul>
+                                        <a href="<?= base_url(); ?>Auth/logout">Logout</a>
                                     </div>
                                 </div>
                             </div>
@@ -62,7 +64,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         <div class="row align-items-center">
                             <div class="col-lg-2">
                                 <div class="logo">
-                                    <a href="<?= base_url(); ?>Market"><img src="<?php echo base_url('themes/daxone/assets/images/logo/logo.png')?>" alt="logo"></a>
+                                    <a href="index.html"><img src="<?php echo base_url('themes/daxone/assets/images/logo/logo.png')?>" alt="logo"></a>
                                 </div>
                             </div>
                             <div class="col-lg-9">
@@ -78,14 +80,20 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                                 </button>
                                             </div>
                                         </form>
-                                    </div>
+                                   </div>
                                 </div>
                             </div>
-                        
+                        <div class="col-lg-1">
+                                <div class="cart-wrap cart-wrap-3">
+                                    <button class="cart-active">
+                                        <i class="la la-tags"></i><span class="mini-cart-price-3"><?= $bidder['saldo']; ?></span> 
+                                        
+                                    </button>
                         </div>
                     </div>
                 </div>
             </div>
+        </div>
             <div class="header-bottom sticky-bar">
                 <div class="container-fluid">
                     <div class="row">
@@ -99,7 +107,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                         <li class="angle-shape"><a href="<?= base_url(); ?>Market">K a t e g o r i</a>
                                             <ul class="submenu">
                                                 <li><a href="<?= base_url(); ?>Market/kategorilukisan">L u k i s a n </a></li>
-                                                <li><a href="<?= base_url(); ?>Market/kategorikriya">K r i y a </a></li>
+                                                <li><a href="<?= base_url(); ?>Market/kategorikriya">K r i y a (Kerajinan Tangan) </a></li>
                                                 <li><a href="<?= base_url(); ?>Market/kategorigrafis">G r a f i s </a></li>
                                                 <li><a href="<?= base_url(); ?>Market/kategoriukiran">U k i r a n </a></li>
                                             </ul>
@@ -144,34 +152,133 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                         <div class="tab-pane fade show active" id="bidding" role="tabpanel">
                                             <div class="myaccount-content">
                                                 <h3>Detail Produk</h3>
+
+                                                <!------------------------------------------------------------------------------------>
+                <!-- baris program dibawah ini untuk menampilkan flashdata pesan error-->
+                <!------------------------------------------------------------------------------------>
+                              <?php 
+                                if(!empty(validation_errors()))
+                                    {  ?>
+                                        <div id ="pesan-error" class="alert alert-danger">    
+                                        <?php echo validation_errors(); ?> </div>
+                                    <?php } ?>
+                <!------------------------------------------------------------------------------------>
+                <!------------------------------------------------------------------------------------>
+                <!------------------------------------------------------------------------------------>
 <div class="product-details-area pt-10 pb-90">
             <div class="container">
                 <div class="row">
+                     <?php foreach($default->result() as $default){?>
                     <div class="col-lg-6 col-md-6">
                         <div class="product-details-img-left">
-                            <img class="zoompro" src="<?php echo base_url('themes/daxone/assets/images/product-details/pain1.png')?>" style="width: 405px; height: 480px;" data-zoom-image="<?php echo base_url('themes/daxone/assets/images/product-details/pain1.png')?>" alt="<?php echo base_url('themes/daxone/assets/images/product-details/pain1.png')?>">
+                            <img class="zoompro" src="<?php echo base_url('assets/foto/'.$default->foto1)?>" style="width: 405px; height: 480px;" data-zoom-image="<?php echo base_url('assets/foto/'.$default->foto1)?>" alt="<?php echo base_url('assets/foto/'.$default->foto1)?>">
                         </div>
                     </div>
+
                     <div class="col-lg-6 col-md-6">
                         <div class="product-details-content pro-details-content-modify">
-                            <span><h2>LUKISAN</span>
-                            <h3>Lukisan Penari Bali</h3>
+                            <h3><?php echo $default->namabrg;?></h3>
                             <div class="pro-details-price-wrap">
                                 <div class="product-price">
-                                    <span><h3>OB  : 120.000</span></h3>
-                                    <span><h3>INC: 15.000</span></h3><br>
-                                   <span><h3>CURRENT : 250.000</h3></span>
-                                      <div class="timer timer-style-2">
+                        <!------------------------------------------------------------------------------------>
+                        <!----------Menampilkan hasil countdown----------------------------------------------->
+                        <!------------------------------------------------------------------------------------>
+                            <?php  $date= ($default->waktu_akhir) ?>
+                            <div class="form-group">
+                                <span><h3 for="name" id="countdown">countdown: </h3></span>
+                                <span><h3 for="name" id="cd"></h3></span>
+                            </div>
+                            <!------------------------------------------------------------------------------------>
+                            <!------------------------------------------------------------------------------------>
+                            <!------------------------------------------------------------------------------------>
+                                    <span><h3>OB  : <?php echo $default->ob;?></h3></span>
+                                    <span><h3>INC: <?php echo $default->inc;?></h3></span><br>
+                                   <span><h3>CURRENT : <?php echo $default->crt;?></h3></span>
+
+
+
+                                    <form class="cmxform form-horizontal tasi-form" id="commentForm" method="post" action="<?php echo base_url();?>bid/add/ <?PHP ECHO $default->idlelang ?>" novalidate="novalidate" enctype="multipart/form-data">
+                            
+                <!------------------------------------------------------------------------------------>
+                <!-- baris program dibawah ini untuk menampilkan flashdata pesan error-->
+                <!------------------------------------------------------------------------------------>
+                              <?php 
+                                if(!empty(validation_errors()))
+                                    {  ?>
+                                        <div id ="pesan-error" class="alert alert-danger">    
+                                        <?php echo validation_errors(); ?> </div>
+                                    <?php } ?>
+                <!------------------------------------------------------------------------------------>
+                <!------------------------------------------------------------------------------------>
+                <!------------------------------------------------------------------------------------>
+
+                
+                            <div class="form-group">
+                                <input class="form-control"
+                                 type="hidden" name="idlelang" value="<?php echo ($default->idlelang) ?>" />
+                                <label for="name">Barang</label>
+                                <input class="form-control"
+                                 type="text" name="namabrg" disabled value="<?php echo ($default->namabrg) ?>" />
+                            </div>
+                            <div class="form-group">
+                                <label for="name">Open Bidding</label>
+                                <input class="form-control"
+                                 type="text" name="ob" disabled value="<?php echo ($default->ob) ?>" />
+                                 <input class="form-control"
+                                 type="hidden" name="ob_update" value="<?php echo ($default->ob) ?>" />
+                            </div>
+                            <div class="form-group">
+                                <label for="name">Inc</label>
+                                <input class="form-control"
+                                 type="text" name="inc" disabled value="<?php echo ($default->inc) ?>" />
+                                 <input class="form-control"
+                                 type="hidden" name="inc_update" value="<?php echo ($default->inc) ?>" />
+                                 <input class="form-control"
+                                 type="hidden" name="crt_update" value="<?php echo ($default->crt) ?>" />
+                            </div>
+                            <div class="form-group">
+                                <label for="name">Current Bidding</label>
+                                <input class="form-control"
+                                 type="text" name="crt" disabled value="<?php 
+                                 if (($default->crt) == 0) 
+                                        { echo ("none");} 
+                                 else echo ($default->crt); ?>" />
+                            </div>
+                            <div class="form-group">
+                                <label for="name">Next Minimun Bidding</label>
+                                <input class="form-control"
+                                    <?php 
+                                 if (($default->crt) == 0) 
+                                        { $min= $default->ob+$default->inc;} 
+                                 else   { $min= $default->crt+$default->inc;} ?>
+                                 type="number" name="crt_next" disabled value="<?php echo ($min) ?>" />
+                            </div>
+                            <div class="form-group">
+                                <label for="name">Inputkan Bidding</label>
+                                <input class="form-control"
+                                    <?php 
+                                 if (($default->crt) == 0) 
+                                        { $min= $default->ob+$default->inc;} 
+                                 else   { $min= $default->crt+$default->inc;} ?>
+                                 type="number" name="crt_new" placeholder="Bidding Amount" required="" value="<?php echo ($min) ?>" />
+                            </div>
+
+                            <input class="btn btn-success" type="submit" name="btn" value="Bidding" />
+                        </form>
+
+                                      <!-- <div class="timer timer-style-2">
                                                 <div data-countdown="2020/01/01"></div>
-                                            </div>
+                                       </div> -->
                                 </div>
                             </div>
                         </div>
                     </div>
+                     <?php } ?>
                 </div>
             </div>
         </div>                                            </div>
     </div>
+
 <!-- Single Tab Content End -->
                                         <!-- Single Tab Content Start -->
                                         <div class="tab-pane fade" id="produk" role="tabpanel">
@@ -219,7 +326,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                         <div class="tab-pane fade" id="detail" role="tabpanel">
                                             <div class="myaccount-content">
                                                 <h3>Deskripsi Produk</h3>
-                                                <p class="saved-message"><h4>Lukisan Penari Bali menggunakan  cat warna canvas ukuran 135x85 cm dengan bingkai Lakewood</p>
+                                                <p class="saved-message"><h4>Lukisan Penari Bali menggunakan  cat warna canvas ukuran 135x85 cm dengan bingkai Lakewood </h4></p>
                                             </div>
                                         </div>
 
@@ -311,14 +418,6 @@ assets/images/blog/pp1.png')?>" alt="blog"></a>
                                     </div>
                                 </div>
                             </div>
-
-
-
-
-
-
-
-
     </form>
                                 </div>
                             </div>
@@ -385,8 +484,6 @@ assets/images/blog/pp1.png')?>" alt="blog"></a>
                                 <div class="footer-list-4">
                                     <ul>
                                         <li><a href="<?= base_url(); ?>Market/faq">FAQ</a></li>
-                                        <li><a href="<?= base_url(); ?>Auth">Login</a></li>
-                                        <li><a href="<?= base_url(); ?>Auth/Registerbidder">Register</a></li>
                                     </ul>
                                 </div>
                             </div>
@@ -407,10 +504,7 @@ assets/images/blog/pp1.png')?>" alt="blog"></a>
             </div>
         </footer>
     </div>
-         
-
-
-
+     
 
 
 
@@ -456,6 +550,44 @@ assets/images/blog/pp1.png')?>" alt="blog"></a>
         <script src="<?php echo base_url('themes/daxone/assets/js/plugins/smoothscroll.js')?>"></script>
         <!-- Main JS -->
         <script src="<?php echo base_url('themes/daxone/assets/js/main.js')?>"></script>
+
+        <!------------------------------------------------------------------------------------>
+<!--------Javascript untuk memproses countdown---------------------------------------->
+<!------------------------------------------------------------------------------------>
+<script>
+// Set the date we're counting down to
+var countDownDate = new Date("<?php echo $date ?>").getTime();
+
+// Update the count down every 1 second
+var x = setInterval(function() {
+
+  // Get today's date and time
+  var now = new Date().getTime();
+    
+  // Find the distance between now and the count down date
+  var distance = countDownDate - now;
+    
+  // Time calculations for days, hours, minutes and seconds
+  var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+  var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+  var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+  var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+    
+  // Output the result in an element with id="demo"
+  document.getElementById("cd").innerHTML = days + "d " + hours + "h "
+  + minutes + "m " + seconds + "s ";
+    
+  // If the count down is over, write some text 
+  if (distance < 0) {
+    clearInterval(x);
+    document.getElementById("cd").innerHTML = "EXPIRED";
+  }
+}, 1000);
+</script>
+
+<!------------------------------------------------------------------------------------>
+<!------------------------------------------------------------------------------------>
+<!------------------------------------------------------------------------------------>
     </body>
 
     </html>
