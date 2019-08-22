@@ -134,12 +134,11 @@ class Bid extends CI_Controller
         //callback untuk verifikasi bidding tidak boleh melebihi saldo yang dimiliki
         public function crt_max()
         {			
-		        	$crt = $this->input->post('crt_update');
         			$user = $this->Bid_model->get($this->session->userdata('idbidder')); 
-        			$saldo = ($user->saldo-3);
-		        			if ($crt >= $saldo)
+        			$saldo = ($user->saldo);
+		        			if ($saldo < 3)
 				                {
-				                        $this->form_validation->set_message('crt_max', 'Saldo anda tidak cukup');
+				                        $this->form_validation->set_message('crt_max', 'Saldo anda tidak cukup. Silahkan isi saldo');
 				                        return FALSE;
 				                }
 				                else
