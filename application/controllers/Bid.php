@@ -138,7 +138,7 @@ class Bid extends CI_Controller
         			$saldo = ($user->saldo);
 		        			if ($saldo < 3)
 				                {
-				                        $this->form_validation->set_message('crt_max', 'Saldo anda tidak cukup. Silahkan isi saldo');
+				                        $this->form_validation->set_message('crt_max', 'Saldo anda tidak cukup. Silahkan isi saldo terlebih dahulu');
 				                        return FALSE;
 				                }
 				                else
