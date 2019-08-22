@@ -321,27 +321,59 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <!-- PRODUK 1 -->
                     <div class="row">
                         <?php foreach($market->result() as $m){?>
-                        <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 col-12">
-                            <div class="product-wrap product-border-3 product-img-zoom mb-30">
-                                <div class="product-img">
-                                    <a href="<?php echo base_url('bid_iteration/check/'.$m->idlelang)?>"><img src="<?php echo base_url('assets/foto/'.$m->foto1)?>" style="width: 268px; height: 268px;"  alt="product"></a>
-                                    </div>
-                                    <div class="product-content product-content-padding">
-                                        <h4><a href="<?php echo base_url('bid_iteration/check/'.$m->idlelang)?>"><?php echo $m->namabrg;?></a></h4>
-                                        <div class="price-addtocart">
-                                            <div class="product-price">
-                                                <span>Current: <?php echo $m->crt;?></span>
+                       
+                                            <!-------------------------------------------->
+                                            <!-- Jika countdown tidak sama dengan 0-->
+                                            <!-------------------------------------------->
+                                            <?php $akhir= date('d F Y', strtotime($m->waktu_akhir)); if ($akhir >= date("d F Y")) {?>
+                                            <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 col-12">
+                                                <div class="product-wrap product-border-3 product-img-zoom mb-30">
+                                                    <div class="product-img">
+                                                        <a href="<?php echo base_url('bid_iteration/check/'.$m->idlelang)?>"><img src="<?php echo base_url('assets/foto/'.$m->foto1)?>" style="width: 268px; height: 268px;"  alt="product"></a>
+                                                        </div>
+                                                        <div class="product-content product-content-padding">
+                                                            <h4><a href="<?php echo base_url('bid_iteration/check/'.$m->idlelang)?>"><?php echo $m->namabrg;?></a></h4>
+                                                            <div class="price-addtocart">
+                                                                <div class="product-price">
+                                                                    <span>Current: <?php echo $m->crt;?></span>
+                                                                </div>
+                                                                <span>OB: <?php echo $m->ob;?></span>
+                                                            </div>
+                                                            <div class="timer timer-style-2">
+                                                                <div data-countdown="2019-08-23"></div>
+                                                                <!-- COUNTDOWN MENGGUNAKAN TIMESTAMP -->
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                               <!--  <?php echo $m->y."/0".$m->m."/".$m->d; ?> -->
+                                            <!-------------------------------------------->
+                                            <!-- Jika countdown sama dengan 0-->
+                                            <!-------------------------------------------->
+                                            <?php } else if ($akhir < date("d F Y")) {?>
+                                            <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 col-12">
+                                            <div class="product-wrap product-border-3 product-img-zoom mb-30">
+                                                <div class="product-img">
+                                                    <a href=""><img src="<?php echo base_url('assets/foto/'.$m->foto1)?>" style="width: 268px; height: 268px;"  alt="product"></a>
+                                                    </div>
+                                                    <div class="product-content product-content-padding">
+                                                        <h4><a href=""><?php echo $m->namabrg;?></a></h4>
+                                                        <div class="price-addtocart">
+                                                            <div class="product-price">
+                                                                <span>Current: <?php echo $m->crt;?></span>
+                                                            </div>
+                                                            <span>OB: <?php echo $m->ob;?></span>
+                                                        </div>
+                                                        <div class="timer timer-style-2">
+                                                            <div >EXPIRED</div>
+                                                            <!-- COUNTDOWN MENGGUNAKAN TIMESTAMP -->
+                                                        </div>
+                                                    </div>
+                                                </div>
                                             </div>
-                                            <span>OB: <?php echo $m->ob;?></span>
-                                        </div>
-                                        <div class="timer timer-style-2">
-                                            <div data-countdown="2019-08-23"></div>
-                                            <!-- COUNTDOWN MENGGUNAKAN TIMESTAMP -->
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                           <!--  <?php echo $m->y."/0".$m->m."/".$m->d; ?> -->
+                                           <!--  <?php echo $m->y."/0".$m->m."/".$m->d; ?> -->  
+                                        <?php }?>
+
                             <?php } ?>
                                         <a href="<?= base_url(); ?>Bidder/indexall" class="btn btn-info btn-block">
                                       <i class="fa fa-user fa-fw"></i> Other</a>  
