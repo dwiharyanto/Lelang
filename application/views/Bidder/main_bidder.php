@@ -348,7 +348,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                                 </div>
                                                <!--  <?php echo $m->y."/0".$m->m."/".$m->d; ?> -->
                                             <!-------------------------------------------->
-                                            <!-- Jika countdown sama dengan 0-->
+                                            <!------------- Jika countdown sama dengan 0-->
                                             <!-------------------------------------------->
                                             <?php } else if ($akhir < date("d F Y")) {?>
                                             <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 col-12">
